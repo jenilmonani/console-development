@@ -1,0 +1,24 @@
+GPPPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore
+// gppparams is for c++ compiler for 32 bit compiler
+ASPARAMS = --32
+//Assembly options, specifying a 32-bit output.
+LDPARAMS = -melf_i386
+//Linker options for producing an ELF binary for i386 architecture.
+
+// loader.o and kernel.o file will be created.
+objects = loader.o kernel.o
+
+%.o: %.cpp
+	g++ $(GPPPARAMS) -o $@ -c $<
+%.o: %.s
+	as $(ASPARAMS) -o $@ $<
+//The first pattern rule compiles .cpp files into object files using g++.
+The second pattern rule compiles .s files into object files using as.
+
+mykernel.bin: linker.ld $(objects)
+	ld $(LDPARAMS) -T $< -o $@ $(objects)
+//The mykernel.bin target specifies that it depends on a linker script (linker.ld) and the object files. It uses ld to link them into a single binary.
+
+install: mykernel.bin
+	sudo cp $< /boot/mykernel.bin
+//install my kernel.bin file
