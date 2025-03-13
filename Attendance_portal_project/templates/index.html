@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Attendance Portal</h1>
+        <div class="d-grid gap-2 col-6 mx-auto mt-4">
+            <a href="{{ url_for('register') }}" class="btn btn-primary">Register Student</a>
+            <a href="{{ url_for('register_teacher') }}" class="btn btn-secondary">Register Teacher</a>
+            <a href="{{ url_for('register_course') }}" class="btn btn-success">Register Course</a>
+            <a href="{{ url_for('attendance') }}" class="btn btn-warning">Mark Attendance</a>
+            <a href="{{ url_for('view_students') }}" class="btn btn-info">View Students</a>
+            <a href="{{ url_for('view_teachers') }}" class="btn btn-info">View Teachers</a>
+            <a href="{{ url_for('view_courses') }}" class="btn btn-info">View Courses</a>
+            <a href="{{ url_for('view_attendance') }}" class="btn btn-info">View Attendance Records</a>
+        </div>
+        
+    </div>
+</body>
+</html>
